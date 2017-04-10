@@ -4,9 +4,17 @@
         <servlet-name>ClubLogonServlet</servlet-name>
         <servlet-class>servlets.ClubLogonServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MemberUpdateServlet</servlet-name>
+        <servlet-class>servlets.MemberUpdateServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClubLogonServlet</servlet-name>
         <url-pattern>/ClubLogon</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MemberUpdateServlet</servlet-name>
+        <url-pattern>/MemberUpdate</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

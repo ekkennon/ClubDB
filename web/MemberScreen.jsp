@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
  <html>
@@ -15,44 +16,50 @@
             }
         </style>
     </head>
-    <body>
+    <c:if test="${!m.authenticated}">
+        <script type="text/javascript">
+            window.location = "/ClubDB"
+        </script>
+    </c:if>
+    <c:if test="${m.authenticated}">
+      <body>
         <h1>Club member Data</h1>
         <form id="memupdate" action="MemberUpdate" method="post">
             <table class="member-details">
             <tr>
                 <td>Member ID:</td>
                 <td><input type="text" id="memid" name="memid"
-                           value="" readonly="true"></td>
+                           value="${m.memID}" readonly="true"></td>
             </tr>
             <tr>
                 <td>Last Name:</td>
                 <td><input type="text" id="lastname" name="lastname" 
-                           value="" ></td>
+                           value="${m.lname}" ></td>
             </tr>
             <tr>
                 <td>First Name:</td>
                 <td><input type="text" id="firstname" name="firstname" 
-                           value="" ></td>
+                           value="${m.fname}" ></td>
             </tr>
             <tr>
                 <td>Middle Nm:</td>
                 <td><input type="text" id="middlename" name="middlename" 
-                           value="" ></td>
+                           value="${m.midName}" ></td>
             </tr>
             <tr>
                 <td>Status:</td>
                 <td><input type="text" id="status" name="status" 
-                           value="" ></td>
+                           value="${m.status}" ></td>
             <tr>
             <tr>
                 <td>Member Date:</td>
                 <td><input type="text" id="memdt" name="memdt" 
-                           value="" ></td>
+                           value="${m.memDate}" ></td>
             </tr>
             <tr>
                 <td>Password:</td>
                 <td><input type="password" id="psswd" name="psswd" 
-                           value="" size="22"></td>
+                           value="${m.password}" size="22"></td>
             </tr>
             <tr>
                 <td></td>
@@ -61,6 +68,7 @@
             </table>
         </form>
         <br>
+        ${ msg }
          <hr>
          <br>View Transaction History From:<br>
             <form action="ShowPurchases" method="post" >
@@ -79,4 +87,5 @@
          <br><br>
          <a href="/ClubDB">Back to the Login Screen</a>
        </body>
+    </c:if>
 </html>

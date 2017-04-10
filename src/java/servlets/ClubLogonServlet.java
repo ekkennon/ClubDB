@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -55,6 +56,14 @@ public class ClubLogonServlet extends HttpServlet {
             Statement s = conn.createStatement();
             sql = "SELECT * FROM tblMembers WHERE MemId = '" + userId + "'";
             ResultSet r = s.executeQuery(sql);
+            //TODO in logon.jsp if there is a member object auto fill username (first from active user, second from cookie)
+            //TODO Purchase class
+            //TODO purchase servlet
+            //TODO Required Elements -> e. has sample if-else for expression language (needed for logon.jsp)
+            //TODO use a prepared statement on logon servlet
+            //TODO use ConnectionPool instance for viewing purchases?
+            //TODO SQL Code -> 3 has sample sql statement for purchases
+            //TODO use "from" date on purchases view
             if (r.next()) {
                 m = new Member();
                 m.setMemID(userId);
@@ -62,12 +71,16 @@ public class ClubLogonServlet extends HttpServlet {
                 m.setPassword(r.getLong("Password"));
                 if (m.isAuthenticated()) {
                     msg = "Member Authenticated!<br/>";
-                    //TODO build rest of member object
-                    //TODO set destination to member screen
-                    //TODO set session variables (if needed)
+                    m.setLname(r.getString("LastName"));
+                    m.setFname(r.getString("FirstName"));
+                    m.setMidName(r.getString("MiddleName"));
+                    m.setStatus(r.getString("status"));
+                    m.setMemDate(r.getString("MemDt"));
+                    url = "/MemberScreen.jsp";
                 } else {
                     msg = "Member failed to authenticate<br/>";
                 }
+                request.getSession().setAttribute("m", m);
             } else {
                 msg = "User not found in DB<br/>";
             }
@@ -77,6 +90,10 @@ public class ClubLogonServlet extends HttpServlet {
             msg = "SQL Error" + e.getMessage() + "<br/>";
         }
         request.setAttribute("msg", msg);
+        Cookie uid = new Cookie("userid",userId);
+        uid.setMaxAge(60*10);
+        uid.setPath("/");
+        response.addCookie(uid);
         RequestDispatcher disp = getServletContext().getRequestDispatcher(url);
         disp.forward(request,response);
     }
