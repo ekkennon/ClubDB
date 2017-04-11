@@ -20,7 +20,7 @@
                 <tr>
                     <td>User ID:</td>
                     <td><input type="text" name="userid" id="userid"
-                               value="">
+                               value="${empty m.memid ? cookie.userid.value : m.memid}">
                     </td>
                 </tr>
                 <tr>

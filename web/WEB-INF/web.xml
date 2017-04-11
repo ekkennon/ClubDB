@@ -8,6 +8,10 @@
         <servlet-name>MemberUpdateServlet</servlet-name>
         <servlet-class>servlets.MemberUpdateServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowPurchasesServlet</servlet-name>
+        <servlet-class>servlets.ShowPurchasesServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClubLogonServlet</servlet-name>
         <url-pattern>/ClubLogon</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>MemberUpdateServlet</servlet-name>
         <url-pattern>/MemberUpdate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowPurchasesServlet</servlet-name>
+        <url-pattern>/ShowPurchases</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
