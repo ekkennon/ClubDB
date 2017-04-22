@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
     Created on : Apr 25, 2011, 8:41:00 AM
-    Author     : PC
+    Author     : ekk
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -20,7 +20,7 @@
                 <tr>
                     <td>User ID:</td>
                     <td><input type="text" name="userid" id="userid"
-                               value="${empty m.memid ? cookie.userid.value : m.memid}">
+                               value="${empty m.memID ? cookie.userid.value : m.memID}">
                     </td>
                 </tr>
                 <tr>

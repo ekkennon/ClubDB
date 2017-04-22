@@ -7,7 +7,7 @@ package business;
 
 /**
  *
- * @author raefo
+ * @author ekk
  */
 public class Member {
     private String memID;
@@ -20,14 +20,14 @@ public class Member {
     private long pwAttempt;
     
     public Member() {
-        setMemID("");
-        setMemDate("");
-        setFname("");
-        setLname("");
-        setMidName("");
-        setStatus("");
-        setPassword(-1);
-        setPwAttempt(0);
+        memID = "";
+        memDate = "";
+        fname = "";
+        lname = "";
+        midName = "";
+        status = "";
+        password = -1;
+        pwAttempt = 0;
     }
 
     /**

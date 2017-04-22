@@ -1,7 +1,7 @@
 <%-- 
     Document   : Purchases
     Created on : Apr 11, 2017, 3:08:06 PM
-    Author     : raefo
+    Author     : ekk
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -13,7 +13,7 @@
         <title>Purchases</title>
     </head>
     <body>
-        <h1>Member Purchases</h1>
+        <h1>Member Purchases${ from }</h1>
         <h2>${m.memID}</h2>
         <h2>${m.fname} ${m.lname}</h2>
         
